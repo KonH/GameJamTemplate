@@ -43,7 +43,7 @@ To perform build actions, you need to open your terminal, navigate to your proje
 Pull changes & build in single command:
 
 ```
-nuke --target UpdateAndBuild
+nuke --target BuildAfterUpdate
 ```
 
 Pull changes only:

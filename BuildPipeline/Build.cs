@@ -14,7 +14,7 @@ class Build : NukeBuild {
 
 	public static int Main() => Execute<Build>(x => x.RunBuild);
 
-	Target UpdateAndBuild => _ => _
+	Target BuildAfterUpdate => _ => _
 		.Triggers(Update)
 		.Triggers(RunBuild);
 
@@ -60,7 +60,7 @@ class Build : NukeBuild {
 		});
 
 	Target PublishAfterBuild => _ => _
-		.Triggers(UpdateAndBuild)
+		.Triggers(BuildAfterUpdate)
 		.Triggers(Publish);
 
 	string GetUnityPath(string version) =>
