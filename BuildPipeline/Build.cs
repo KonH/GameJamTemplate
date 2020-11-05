@@ -15,7 +15,7 @@ class Build : NukeBuild {
 	public static int Main() => Execute<Build>(x => x.RunBuild);
 
 	Target UpdateAndBuild => _ => _
-		.DependsOn(Update)
+		.Triggers(Update)
 		.Triggers(RunBuild);
 
 	Target Update => _ => _
@@ -29,6 +29,7 @@ class Build : NukeBuild {
 		});
 
 	Target RunBuild => _ => _
+		.After(Update)
 		.Executes(() =>
 		{
 			ResetProjectVersion();
@@ -46,6 +47,7 @@ class Build : NukeBuild {
 		});
 
 	Target Publish => _ => _
+		.After(RunBuild)
 		.Requires(() => PublishTarget)
 		.Executes(() => {
 			var toolPath = GetButlerPath();
@@ -58,7 +60,7 @@ class Build : NukeBuild {
 		});
 
 	Target PublishAfterBuild => _ => _
-		.DependsOn(UpdateAndBuild)
+		.Triggers(UpdateAndBuild)
 		.Triggers(Publish);
 
 	string GetUnityPath(string version) =>
