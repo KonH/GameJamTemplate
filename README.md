@@ -22,7 +22,8 @@ There is a blank template for small game production for jam usage. It allows you
 
 ## Starting your project
 
-You have two options:
+You have three options:
+- Click '[Use this template](https://github.com/KonH/GameJamTemplate/generate)' on the page and follow instructions
 - Copy all content of this repository and start working
 - Copy only required files inside your existing project:
     - Assets/Scripts/Editor
