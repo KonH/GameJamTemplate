@@ -87,7 +87,7 @@ If you need to publish only:
 nuke --target Publish --publishTarget TARGET
 ```
 
-Where `TARGET` is a string like `username/game-name:platform` (for this sample it will be `konh/game-jam-template:html`) 
+Where `TARGET` is a string like `username/game-name:platform` (for this sample it will be `konh/game-jam-template:html`).
 
 When you publishing a build for the first time, you need to [authorize](https://itch.io/docs/butler/login.html) your machine.
 
