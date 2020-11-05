@@ -1,0 +1,22 @@
+# System entries
+.DS_Store
+
+# Nuke
+.tmp
+
+# IDE
+.idea
+*.DotSettings
+
+# Unity
+Library
+Logs
+UserSettings
+Temp
+bin
+obj
+*.csproj
+*.sln
+
+# Build results
+Build
