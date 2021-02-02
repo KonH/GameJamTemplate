@@ -1,4 +1,4 @@
-# Game Jam Template ([ru](README.RU.md))
+# Game Jam Template
 
 ## Summary
 
