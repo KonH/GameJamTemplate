@@ -35,6 +35,10 @@ You have three options:
 
 After it, I suggest you to make a separated copy of your repository somewhere to operates with it without interruptions in development process (Unity don't allow you to build a project in command-line mode while it's already opened in UI editor).
 
+## Prepare upload dependencies (optional)
+
+Download [butler dependencies](https://github.com/KonH/GameJamTemplate/releases/download/1.0.0/Butler.zip) and save it in **./Butler** directory in your project. This step is required to upload builds to itch.io. Motivation for this approach is described [here](https://github.com/KonH/GameJamTemplate/issues/1). 
+
 ## Basics
 
 To perform build actions, you need to open your terminal, navigate to your project location and run the provided commands.
