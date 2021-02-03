@@ -4,6 +4,10 @@
 # Nuke
 .tmp
 
+# TeamCity
+.teamcity/*.iml
+.teamcity/target
+
 # IDE
 .idea
 *.DotSettings
