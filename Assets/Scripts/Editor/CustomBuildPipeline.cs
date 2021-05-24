@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -6,14 +7,30 @@ using UnityEngine;
 namespace UnityCiPipeline {
 	public class CustomBuildPipeline : MonoBehaviour {
 		public static void RunBuild(BuildTarget target) {
-			var targetGroup = BuildPipeline.GetBuildTargetGroup(target);
+			var targetDirectory = "Build";
+			if ( Directory.Exists(targetDirectory) ) {
+				Directory.Delete(targetDirectory, recursive: true);
+			}
+			var targetLocation = GetTargetLocation(target, targetDirectory);
+			var targetGroup    = BuildPipeline.GetBuildTargetGroup(target);
 			var opts = new BuildPlayerOptions {
 				target           = target,
 				targetGroup      = targetGroup,
-				locationPathName = "Build",
+				locationPathName = targetLocation,
 				scenes           = EditorBuildSettings.scenes.Where(s => s.enabled).Select(s => s.path).ToArray()
 			};
 			BuildPipeline.BuildPlayer(opts);
+		}
+
+		static string GetTargetLocation(BuildTarget target, string targetDirectory) {
+			switch ( target ) {
+				case BuildTarget.StandaloneWindows:
+				case BuildTarget.StandaloneWindows64:
+					return Path.Combine(targetDirectory, "Build.exe");
+				case BuildTarget.StandaloneOSX:
+					return Path.Combine(targetDirectory, "Build.app");
+				default: return targetDirectory;
+			}
 		}
 
 		[MenuItem("BuildPipeline/RunBuild/WebGL")]
